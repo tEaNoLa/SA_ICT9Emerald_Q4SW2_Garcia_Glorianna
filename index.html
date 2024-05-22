@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math Challenge with Kalu</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <style>
+    body {
+      padding: 20px;
+      background-color: #f0f0f0;
+      text-align: center;
+      font-family: "VT323", monospace;
+    }
+    #calculator {
+      background-color: #fff;
+      padding: 20px;
+      border: 2px dashed #ccc;
+      border-radius: 10px;
+      display: inline-block;
+      position: relative;
+      width: 50%;
+      min-width: 300px;
+      margin-left: 20%; /* Adjust the margin to move it more to the right */
+      margin-bottom: 20px;
+    }
+    .btn-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px; /* Add space between the buttons */
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 20px; /* Add space above the buttons */
+    }
+    .btn-calc {
+      flex-grow: 1;
+      margin: 0;
+    }
+    .calculator-image {
+  position: absolute;
+  left: 25%; /* Center the image horizontally */
+  top: 60px; /* Adjust the vertical position to move it down */
+  transform: translateX(-50%); /* Center the image horizontally */
+  width: 200px; /* Increase the width of the image */
+  height: auto; /* Maintain the aspect ratio */
+}
+
+
+    .vt323-regular {
+      font-family: "VT323", monospace;
+      font-weight: 400;
+      font-style: normal;
+    }
+  </style>
+</head>
+<body>
+  <div id="calculator" class="container">
+    <h2 class="vt323-regular">Hi, my name is <span style="color: lightpink;">Calcu</span>. I'm here to give you a Math challenge.</h2>
+    <div class="form-group">
+      <label for="num1">Enter a value for x:</label>
+      <input type="number" id="num1" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="num2">Enter a value for y:</label>
+      <input type="number" id="num2" class="form-control">
+    </div>
+    <div id="results" class="vt323-regular"></div>
+  </div>
+
+  <img src="pinkcalcu.png" alt="Calculator" class="calculator-image">
+
+  <div class="btn-container">
+    <button onclick="calculateProduct()" class="btn btn-success btn-calc vt323-regular">Product of x and y</button>
+    <button onclick="calculatePower()" class="btn btn-warning btn-calc vt323-regular">x raised to y</button>
+    <button onclick="calculateRemainder()" class="btn btn-danger btn-calc vt323-regular">Get the remainder</button>
+    <button onclick="checkEquality()" class="btn btn-info btn-calc vt323-regular">Check if x is equal to y</button>
+  </div>
+
+  <script>
+    // JavaScript code
+    function calculateProduct() {
+      var num1 = parseInt(document.getElementById('num1').value);
+      var num2 = parseInt(document.getElementById('num2').value);
+      var product = num1 * num2;
+      displayResult(`Product of x and y: ${product}`);
+    }
+
+    function calculatePower() {
+      var num1 = parseInt(document.getElementById('num1').value);
+      var num2 = parseInt(document.getElementById('num2').value);
+      var power = Math.pow(num1, num2);
+      displayResult(`x raised to y: ${power}`);
+    }
+
+    function calculateRemainder() {
+      var num1 = parseInt(document.getElementById('num1').value);
+      var num2 = parseInt(document.getElementById('num2').value);
+      var remainder = num1 % num2;
+      displayResult(`Remainder of x divided by y: ${remainder}`);
+    }
+
+    function checkEquality() {
+      var num1 = parseInt(document.getElementById('num1').value);
+      var num2 = parseInt(document.getElementById('num2').value);
+      var isEqual = (num1 === num2);
+      displayResult(`x is equal to y: ${isEqual}`);
+    }
+
+    function displayResult(result) {
+      document.getElementById('results').innerHTML = `<p>${result}</p>`;
+    }
+  </script>
+</body>
+</html>
